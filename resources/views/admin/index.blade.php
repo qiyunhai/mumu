@@ -1,324 +1,166 @@
-@extends('admin.public.subject')
-@section('title', '后台首页')
-@section('content')
-    <div class="row row-eq-height my-3 mt-3">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="card no-b mb-3 bg-danger text-white">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="icon-package s-18"></i></div>
-                                <div><span class="text-success">40+35</span></div>
-                            </div>
-                            <div class="text-center">
-                                <div class="s-48 my-3 font-weight-lighter"><i class="icon-chrome"></i></div>
-                                Chrome
-                            </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layuimini-iframe版 v2 - 基于Layui的后台管理系统前端模板</title>
+    <meta name="keywords" content="layuimini,layui,layui模板,layui后台,后台模板,admin,admin模板,layui mini">
+    <meta name="description" content="layuimini基于layui的轻量级前端后台管理框架，最简洁、易用的后台框架模板，面向所有层次的前后端程序,只需提供一个接口就直接初始化整个框架，无需复杂操作。">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="{{asset(__ADMIN__)}}/images/favicon.ico">
+    <link rel="stylesheet" href="{{asset(__ADMIN__)}}/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="{{asset(__ADMIN__)}}/css/layuimini.css?v=2.0.4.2" media="all">
+    <link rel="stylesheet" href="{{asset(__ADMIN__)}}/css/themes/default.css" media="all">
+    <link rel="stylesheet" href="{{asset(__ADMIN__)}}/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style id="layuimini-bg-color">
+    </style>
+</head>
+<body class="layui-layout-body layuimini-all">
+<div class="layui-layout layui-layout-admin">
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="card no-b mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="icon-timer s-18"></i></div>
-                                <div><span class="badge badge-pill badge-primary">4:30</span></div>
-                            </div>
-                            <div class="text-center">
-                                <div class="s-48 my-3 font-weight-lighter">68</div>
-                                New Orders
-                            </div>
+    <div class="layui-header header">
+        <div class="layui-logo layuimini-logo"></div>
 
-                        </div>
-                    </div>
-                </div>
+        <div class="layuimini-header-content">
+            <a>
+                <div class="layuimini-tool"><i title="展开" class="fa fa-outdent" data-side-fold="1"></i></div>
+            </a>
 
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="card no-b mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="icon-user-circle-o s-18"></i></div>
-                                <div><span class="badge badge-pill badge-danger">4:30</span></div>
-                            </div>
-                            <div class="text-center">
-                                <div class="s-48 my-3 font-weight-lighter">170</div>
-                                New Users
-                            </div>
+            <!--电脑端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-menu-header-pc layuimini-pc-show">
+            </ul>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="card no-b mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="icon-user-times s-18"></i></div>
-                                <div><span class="text-danger">50</span></div>
-                            </div>
-                            <div class="text-center">
-                                <div class="s-48 my-3 font-weight-lighter">95</div>
-                                Returning Users
-                            </div>
+            <!--手机端头部菜单-->
+            <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-mobile-show">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                    <dl class="layui-nav-child layuimini-menu-header-mobile">
+                    </dl>
+                </li>
+            </ul>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card no-b p-2">
-                <div class="card-body">
-                    <div class="card-body">
-                        <div class="height-300">
-                            <canvas
-                                    data-chart="chartJs"
-                                    data-chart-type="doughnut"
-                                    data-dataset="[
-                                                        [75, 25,25],
+            <ul class="layui-nav layui-layout-right">
 
-                                                    ]"
-                                    data-labels="[['Disk'],['Database'],['Disk2'],['Database2']]"
-                                    data-dataset-options="[
-                                                    {
-                                                        label: 'Disk',
-                                                        backgroundColor: [
-                                                            '#03a9f4',
-                                                            '#8f5caf',
-                                                            '#3f51b5'
-                                                        ],
-
-                                                    },
-
-
-                                                    ]"
-                                    data-options="{legend: {display: !0,position: 'bottom',labels: {fontColor: '#7F8FA4',usePointStyle: !0}},
-                                }"
-                            >
-                            </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card no-b my-3">
-        <div class="card-body">
-            <div class="my-2 height-300">
-                <canvas
-                        data-chart="bar"
-                        data-dataset="[
-                                        [21, 90, 55, 0, 59, 77, 12,21, 90, 55, 0, 59, 77, 12,21, 90, 55, 0, 59, 77, 12],
-                                        [12, 40, 16, 17, 89, 0, 12,12, 0, 55, 60, 79, 99, 12,12, 0, 55, 60, 79, 99, 12],
-                                        [12, 40, 16, 17, 89, 0,12, 40, 16, 17, 89, 0, 12,12, 40, 16, 17, 89, 0, 12],
-                                        ]"
-                        data-labels="['Blue','Yellow','Green','Purple','Orange','Red','Indigo','Blue','Yellow','Green','Purple','Orange','Red','Indigo','Blue','Yellow','Green','Purple','Orange','Red','Indigo']"
-                        data-dataset-options="[
-                                    {
-                                        label: 'HTML',
-                                        backgroundColor: '#7986cb',
-                                        borderWidth: 0,
-
-                                    },
-                                    {
-                                         label: 'Wordpress',
-                                         backgroundColor: '#88e2ff',
-                                         borderWidth: 0,
-
-                                     },
-                                    {
-                                          label: 'Laravel',
-                                          backgroundColor: '#e2e8f0',
-                                          borderWidth: 0,
-
-                                      }
-                                    ]"
-                        data-options="{
-                                      legend: { display: true,},
-                                      scales: {
-                                        xAxes: [{
-                                            stacked: true,
-                                             barThickness:5,
-                                             gridLines: {
-                                                zeroLineColor: 'rgba(255,255,255,0.1)',
-                                                 color: 'rgba(255,255,255,0.1)',
-                                                 display: false,},
-                                             }],
-                                        yAxes: [{
-                                                stacked: true,
-                                                     gridLines: {
-                                                        zeroLineColor: 'rgba(255,255,255,0.1)',
-                                                        color: 'rgba(255,255,255,0.1)',
-                                                    }
-                                       }]
-
-                                      }
-                                }"
-                >
-                </canvas>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="row my-3 no-gutters">
-                <div class="col-md-3">
-                    <h1>Tasks</h1>
-                    Currently assigned tasks to team.
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mb-3">
-                                    <h6>New Layout</h6>
-                                    <small>75% Completed</small>
-                                </div>
-                                <figure class="avatar">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u12.png" alt=""></figure>
-                            </div>
-                            <div class="progress progress-xs mb-3">
-                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mb-3">
-                                    <h6>New Layout</h6>
-                                    <small>75% Completed</small>
-                                </div>
-                                <figure class="avatar">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u2.png" alt=""></figure>
-                            </div>
-                            <div class="progress progress-xs mb-3">
-                                <div class="progress-bar bg-indigo" role="progressbar" style="width: 75%;"
-                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mb-3">
-                                    <h6>New Layout</h6>
-                                    <small>75% Completed</small>
-                                </div>
-                                <div class="avatar-group">
-                                    <figure class="avatar">
-                                        <img src="{{asset(__ADMIN__)}}/img/dummy/u4.png" alt=""></figure>
-                                    <figure class="avatar">
-                                        <img src="{{asset(__ADMIN__)}}/img/dummy/u11.png" alt=""></figure>
-                                    <figure class="avatar">
-                                        <img src="{{asset(__ADMIN__)}}/img/dummy/u1.png" alt=""></figure>
-                                </div>
-                            </div>
-                            <div class="progress progress-xs mb-3">
-                                <div class="progress-bar yellow" role="progressbar" style="width: 75%;"
-                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mb-3">
-                                    <h6>New Layout</h6>
-                                    <small>75% Completed</small>
-                                </div>
-                                <figure class="avatar">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u5.png" alt=""></figure>
-                            </div>
-                            <div class="progress progress-xs mb-3">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 75%;"
-                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
+                </li>
+                <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
+                </li>
+                <li class="layui-nav-item layuimini-setting">
+                    <a href="javascript:;">admin</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                        </dd>
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd>
+                            <a href="{{route('admin_logout')}}" class="login-out">退出登录</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layuimini-select-bgcolor" lay-unselect>
+                    <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <div class=" row my-3">
-        <div class="col-md-6">
-            <div class=" card b-0">
-                <div class="card-body p-5">
-                    <canvas id="gradientChart" width="600" height="340"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class=" card no-b">
-                <div class="card-body">
-                    <table class="table table-hover earning-box">
-                        <tbody>
-                        <tr class="no-b">
-                            <td class="w-10">
-                                <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u6.png" alt="">
-                                </a>
-                            </td>
-                            <td>
-                                <h6>Sara Kamzoon</h6>
-                                <small class="text-muted">Marketing Manager</small>
-                            </td>
-                            <td>25</td>
-                            <td>$250</td>
-                        </tr>
-                        <tr>
-                            <td class="w-10">
-                                <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u9.png" alt="">
-                                </a>
-                            </td>
-                            <td>
-                                <h6>Sara Kamzoon</h6>
-                                <small class="text-muted">Marketing Manager</small>
-                            </td>
-                            <td>25</td>
-                            <td>$250</td>
-                        </tr>
-                        <tr>
-                            <td class="w-10">
-                                <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u11.png" alt="">
-                                </a>
-                            </td>
-                            <td>
-                                <h6>Sara Kamzoon</h6>
-                                <small class="text-muted">Marketing Manager</small>
-                            </td>
-                            <td>25</td>
-                            <td>$250</td>
-                        </tr>
-                        <tr>
-                            <td class="w-10">
-                                <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u12.png" alt="">
-                                </a>
-                            </td>
-                            <td>
-                                <h6>Sara Kamzoon</h6>
-                                <small class="text-muted">Marketing Manager</small>
-                            </td>
-                            <td>25</td>
-                            <td>$250</td>
-                        </tr>
-                        <tr>
-                            <td class="w-10">
-                                <a href="panel-page-profile.html" class="avatar avatar-lg">
-                                    <img src="{{asset(__ADMIN__)}}/img/dummy/u5.png" alt="">
-                                </a>
-                            </td>
-                            <td>
-                                <h6>Sara Kamzoon</h6>
-                                <small class="text-muted">Marketing Manager</small>
-                            </td>
-                            <td>25</td>
-                            <td>$250</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <!--无限极左侧菜单-->
+    <div class="layui-side layui-bg-black layuimini-menu-left">
     </div>
-@endsection
+
+    <!--初始化加载层-->
+    <div class="layuimini-loader">
+        <div class="layuimini-loader-inner"></div>
+    </div>
+
+    <!--手机端遮罩层-->
+    <div class="layuimini-make"></div>
+
+    <!-- 移动导航 -->
+    <div class="layuimini-site-mobile"><i class="layui-icon"></i></div>
+
+    <div class="layui-body">
+
+        <div class="layuimini-tab layui-tab-rollTool layui-tab" lay-filter="layuiminiTab" lay-allowclose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
+            </ul>
+            <div class="layui-tab-control">
+                <li class="layuimini-tab-roll-left layui-icon layui-icon-left"></li>
+                <li class="layuimini-tab-roll-right layui-icon layui-icon-right"></li>
+                <li class="layui-tab-tool layui-icon layui-icon-down">
+                    <ul class="layui-nav close-box">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;"><span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;" layuimini-tab-close="current">关 闭 当 前</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="other">关 闭 其 他</a></dd>
+                                <dd><a href="javascript:;" layuimini-tab-close="all">关 闭 全 部</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <div class="layui-tab-content">
+                <div id="layuiminiHomeTabIframe" class="layui-tab-item layui-show"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="{{asset(__ADMIN__)}}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="{{asset(__ADMIN__)}}/js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script>
+    layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            miniAdmin = layui.miniAdmin,
+            miniTongji = layui.miniTongji;
+
+        var options = {
+            iniUrl: '{{route("admin_welcome")}}',    // 初始化接口
+            clearUrl: "{{asset(__ADMIN__)}}/api/clear.json", // 缓存清理接口
+            urlHashLocation: true,      // 是否打开hash定位
+            bgColorDefault: false,      // 主题默认配置
+            multiModule: true,          // 是否开启多模块
+            menuChildOpen: false,       // 是否默认展开菜单
+            loadingTime: 0,             // 初始化加载时间
+            pageAnim: true,             // iframe窗口动画
+            maxTabNum: 20,              // 最大的tab打开数量
+        };
+        miniAdmin.render(options);
+
+        // 百度统计代码，只统计指定域名
+        miniTongji.render({
+            specific: true,
+            domains: [
+                '99php.cn',
+                'layuimini.99php.cn',
+                'layuimini-onepage.99php.cn',
+            ],
+        });
+
+    });
+</script>
+</body>
+</html>

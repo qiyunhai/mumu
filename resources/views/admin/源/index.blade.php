@@ -2,14 +2,38 @@
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
-    <title>穆穆宠物医院-后台管理系统-@yield('title')</title>
+    <title>穆穆宠物医院-后台管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="齐云海">
     <link rel="icon" href="{{asset(__ADMIN__)}}/img/basic/favicon.ico" type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="{{asset(__ADMIN__)}}/css/app.css">
 </head>
+<style>
+    /* 隐藏浏览器滚动条 */
+    ::-webkit-scrollbar {
+        width: 0px;
+        height: 5px;
+    }
+    /*下面的css定义可以不写，如果width不是0px的时候，通过下面的css定义可以自定义其他样式的滚动条*/
+    ::-webkit-scrollbar-thumb{
+        background-color: transparent;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:vertical:hover{
+        background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb:vertical:active{
+        background-color: transparent;
+    }
+    ::-webkit-scrollbar-button{
+        display: none;
+    }
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+</style>
 <body class="light sidebar-mini sidebar-collapse">
 <!-- Pre loader -->
 <div id="loader" class="loader">
@@ -97,53 +121,6 @@
                                 </a>
                             </li>
                             {!! $admin_node_list !!}
-                            {{--@foreach($admin_node_list as $key => $value)--}}
-                                {{--<li class="treeview">--}}
-                                    {{--<a href="#">--}}
-                                        {{--<i class="icon icon-account_box s-24"></i>--}}
-                                        {{--{{$value['title']}}--}}
-                                        {{--<i class=" icon-angle-left  pull-right"></i>--}}
-                                    {{--</a>--}}
-                                    {{--<ul class="treeview-menu">--}}
-                                        {{--@php--}}
-                                            {{--//array_foreach($value['son']);--}}
-                                        {{--@endphp--}}
-                                    {{--</ul>--}}
-                                {{--</li>--}}
-                            {{--@endforeach--}}
-                            {{--@php--}}
-                            {{--// 思路：应该是先遍历pid等于0的父级，在去验证 递归子级son--}}
-                                {{--function array_foreach($array)--}}
-                                {{--{--}}
-                                    {{--foreach ($array as $key => $val ) {--}}
-                                        {{--echo $val['title'].'<br>';--}}
-                                        {{--if (isset($val['son'])) {--}}
-                                            {{--array_foreach($val['son']);--}}
-                                        {{--}  else {--}}
-                                            {{--echo '_'.$val['title'].'<br/>';--}}
-                                        {{--}--}}
-                                    {{--}--}}
-                                {{--}--}}
-                            {{--array_foreach($admin_node_list);--}}
-                            {{--@endphp--}}
-                            {{--@foreach($admin_node_list as $key => $value)--}}
-                            {{--<li class="treeview">--}}
-                                {{--<a href="#">--}}
-                                    {{--<i class="icon icon-account_box s-24"></i>--}}
-                                    {{--{{$value['title']}}--}}
-                                    {{--<i class=" icon-angle-left  pull-right"></i>--}}
-                                {{--</a>--}}
-                                {{--<ul class="treeview-menu">--}}
-                                {{--@foreach($value['son'] as $k => $v)--}}
-                                    {{--@if($v['show'] == '1')--}}
-                                    {{--<li>--}}
-                                        {{--<a href=""><i class="icon icon-circle-o"></i>{{$v['title']}}</a>--}}
-                                    {{--</li>--}}
-                                    {{--@endif--}}
-                                {{--@endforeach--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                            {{--@endforeach;--}}
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -599,13 +576,14 @@
                 </div>
             </div>
         </div>
-    <!--#navbar-->
+        <!--#navbar-->
         <div class="container-fluid relative animatedParent animateOnce my-3">
-            {{--<iframe src="{{route('admin_login')}}" frameborder="0" width="1400px;" height="700px;">--}}
-            @yield('content')
-            {{--</iframe>--}}
+            <div class="embed-responsive embed-responsive-16by9" style="height:100vh">
+                <iframe id ="mframe" class="embed-responsive-item" src="{{route('admin_welcome')}}" scrolling="auto"></iframe>
+            </div>
         </div>
     </div>
+
     <!-- Right Sidebar -->
     <aside class="control-sidebar fixed white ">
         <div class="slimScroll">

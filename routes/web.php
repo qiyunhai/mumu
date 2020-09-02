@@ -27,6 +27,8 @@ Route::post('admin/doLogin', 'Admin\LoginController@doLogin')->name('admin_doLog
 Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['auth:admin']], function (){
     // 首页
     Route::get('index', 'Admin\IndexController@index')->name('admin_index');
+    Route::get('welcome', 'Admin\IndexController@welcome')->name('admin_welcome');
+    Route::get('menu', 'Admin\IndexController@menu')->name('admin_menu');
     // 退出登录
     Route::get('admin/logout', 'Admin\LoginController@logout')->name('admin_logout');
 });

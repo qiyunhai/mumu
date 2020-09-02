@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use App\Model\Admin\Node as NodeModel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View()->share('admin_node_list', NodeModel::get_node_list_view());
+        // 在模板端可直接使用 @json() 方法对数据进行json_encode()
+        Blade::directive('json', function($data){
+           return "<?php echo json_encode({$data}); ?>";
+        });
     }
 }
