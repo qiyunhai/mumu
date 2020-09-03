@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['aut
     // 首页
     Route::get('index', 'Admin\IndexController@index')->name('admin_index');
     Route::get('welcome', 'Admin\IndexController@welcome')->name('admin_welcome');
-    Route::get('menu', 'Admin\IndexController@menu')->name('admin_menu');
+    Route::get('getSystemInit', 'Admin\IndexController@getSystemInit')->name('admin_getSystemInit');
     // 退出登录
-    Route::get('admin/logout', 'Admin\LoginController@logout')->name('admin_logout');
+    Route::get('logout', 'Admin\LoginController@logout')->name('admin_logout');
 });

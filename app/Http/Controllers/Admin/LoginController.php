@@ -30,14 +30,14 @@ class LoginController extends Controller
             // 调用验证器验证
             $validator_result = LoginValidator::check($request->all());
             if($validator_result) {
-                return $this->ajaxResponse(0, $validator_result);
+                return $this->responseJson(0, $validator_result);
             }
         }
         // 登陆认证
         if(Auth::guard('admin')->attempt($request->only(['username','password']))) {
-            return $this->ajaxResponse(1, '登陆成功');
+            return $this->responseJson(1, '登陆成功');
         } else {
-            return $this->ajaxResponse(0, '用户名或密码错误');
+            return $this->responseJson(0, '用户名或密码错误');
         }
     }
 

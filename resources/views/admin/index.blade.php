@@ -138,7 +138,7 @@
             miniTongji = layui.miniTongji;
 
         var options = {
-            iniUrl: '{{route("admin_welcome")}}',    // 初始化接口
+            iniUrl: '{{route("admin_getSystemInit")}}',    // 初始化接口
             clearUrl: "{{asset(__ADMIN__)}}/api/clear.json", // 缓存清理接口
             urlHashLocation: true,      // 是否打开hash定位
             bgColorDefault: false,      // 主题默认配置
