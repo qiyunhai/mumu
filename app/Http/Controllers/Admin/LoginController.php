@@ -32,12 +32,14 @@ class LoginController extends Controller
             if($validator_result) {
                 return $this->responseJson(0, $validator_result);
             }
-        }
-        // 登陆认证
-        if(Auth::guard('admin')->attempt($request->only(['username','password']))) {
-            return $this->responseJson(1, '登陆成功');
+            // 登陆认证
+            if(Auth::guard('admin')->attempt($request->only(['username','password']))) {
+                return $this->responseJson(1, '登陆成功');
+            } else {
+                return $this->responseJson(0, '用户名或密码错误');
+            }
         } else {
-            return $this->responseJson(0, '用户名或密码错误');
+            return $this->responseJson(0, '系统检测到非法登录，登录失败！');
         }
     }
 

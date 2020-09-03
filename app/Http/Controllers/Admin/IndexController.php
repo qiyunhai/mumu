@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use DB;
+use App\Model\Admin\Node;
 
 class IndexController extends Controller
 {
@@ -33,8 +33,7 @@ class IndexController extends Controller
             'image' => 'images/logo.png',
         ];
         // 菜单节点信息
-        $data = DB::table('admin_node')
-            ->where('status',1)
+        $data = Node::where('status',1)
             ->where('show', 1)
             ->orderBy('sort')
             ->get();
@@ -74,7 +73,10 @@ class IndexController extends Controller
         return $tree;
     }
 
-
+    /**
+     * 后台首页
+     * @return mixed
+     */
     public function welcome()
     {
         return view('admin.welcome');

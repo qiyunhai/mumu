@@ -16,9 +16,4 @@ class Admin extends Model implements \Illuminate\Contracts\Auth\Authenticatable
     // 使用trait
     use Authenticatable;
 
-    // 关联角色模型(relate)
-    /*public function rel_role(){
-        //关联关系的返回（一对一）
-        return $this -> hasOne('App\Model\Role','id','role_id');
-    }*/
 }
