@@ -11,8 +11,8 @@ use App\Model\Admin\User as UserModel;
 
 class UserController extends Controller
 {
-    public function userList()
+    public function user()
     {
-
+        return view('admin.user');
     }
 }

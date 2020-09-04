@@ -31,4 +31,6 @@ Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['aut
     Route::get('getSystemInit', 'Admin\IndexController@getSystemInit')->name('admin_getSystemInit');
     // 退出登录
     Route::get('logout', 'Admin\LoginController@logout')->name('admin_logout');
+    // 用户管理
+    Route::get('user', 'Admin\UserController@user');
 });
