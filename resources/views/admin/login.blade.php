@@ -41,7 +41,7 @@
     <div></div>
     <div class="admin-login-background">
         <div class="admin-header">
-            <span>layuimini</span>
+            <span>mumu</span>
         </div>
         <form class="layui-form" action="javascript:void(0);">
             <div>

@@ -31,6 +31,26 @@ Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['aut
     Route::get('getSystemInit', 'Admin\IndexController@getSystemInit')->name('admin_getSystemInit');
     // 退出登录
     Route::get('logout', 'Admin\LoginController@logout')->name('admin_logout');
-    // 用户管理
-    Route::get('user', 'Admin\UserController@user');
+    /**
+     * 用户管理
+     * user: 用户页
+     * userList: 用户列表
+     * addUser: 添加用户页
+     * saveUser: 保存用户操作
+     * editUser: 修改用户页
+     * updateUser: 更新用户操作
+     * deleteUser: 删除用户操作
+     */
+    Route::get('user', function(){
+        return view('admin.public.user.user');
+    });
+    Route::get('userList', 'Admin\UserController@userList')->name('admin_user_list');
+    Route::get('addUser', function(){
+        return view('admin.public.user.add');
+    })->name('admin_add_user');
+    Route::post('saveUser', 'Admin\UserController@saveUser')->name('admin_save_user');
+    Route::get('editUser', 'Admin\UserController@editUser')->name('admin_edit_user');
+    Route::post('updateUser', 'Admin\UserController@updateUser')->name('admin_update_user');
+    Route::get('deleteUser', 'Admin\UserController@deleteUser')->name('admin_delete_user');
+
 });

@@ -13,7 +13,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        return view('admin.public.index');
     }
 
     /**
@@ -29,7 +29,7 @@ class IndexController extends Controller
         ];
         // 后台logo信息
         $logoInfo = [
-            'title' => 'LAYUI MINI',
+            'title' => 'MUMU',
             'image' => 'images/logo.png',
         ];
         // 菜单节点信息
@@ -79,7 +79,7 @@ class IndexController extends Controller
      */
     public function welcome()
     {
-        return view('admin.welcome');
+        return view('admin.public.welcome');
     }
 
 }

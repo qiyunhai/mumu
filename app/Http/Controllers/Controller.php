@@ -24,6 +24,29 @@ class Controller extends BaseController
     }
 
     /**
+     * 响应成功状态
+     * @param array $data [返回数据]
+     * @param int $code [状态码]
+     * @param string $msg [响应信息]
+     * @return mixed
+     */
+    public function responseSuccess($data = [], $code = 0, $msg = 'success')
+    {
+        return response()->json(['data'=>$data, 'code'=>$code, 'msg'=>$msg]);
+    }
+
+    /**
+     * 响应失败状态
+     * @param string $msg [响应信息]
+     * @param int $code [状态码]
+     * @return mixed
+     */
+    public function responseError($msg = 'Error：接口数据异常', $code = -1)
+    {
+        return response()->json(['msg'=>$msg, 'code'=>$code]);
+    }
+
+    /**
      * 对象转数组
      * @param $obj [对象]
      * @return array
