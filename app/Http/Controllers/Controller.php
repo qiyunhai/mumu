@@ -20,7 +20,7 @@ class Controller extends BaseController
      */
     public function responseJson($code, $msg = '', $data = [])
     {
-        return response()->json(['code'=>$code, 'msg'=>$msg, 'data'=>$data]);
+        return json(['code'=>$code, 'msg'=>$msg, 'data'=>$data]);
     }
 
     /**
@@ -32,7 +32,7 @@ class Controller extends BaseController
      */
     public function responseSuccess($data = [], $code = 0, $msg = 'success')
     {
-        return response()->json(['data'=>$data, 'code'=>$code, 'msg'=>$msg]);
+        return json(['data'=>$data, 'code'=>$code, 'msg'=>$msg]);
     }
 
     /**
@@ -43,17 +43,7 @@ class Controller extends BaseController
      */
     public function responseError($msg = 'Error：接口数据异常', $code = -1)
     {
-        return response()->json(['msg'=>$msg, 'code'=>$code]);
-    }
-
-    /**
-     * 对象转数组
-     * @param $obj [对象]
-     * @return array
-     */
-    public function objectToArray($obj)
-    {
-        return json_decode(json_encode($obj), true);
+        return json(['msg'=>$msg, 'code'=>$code]);
     }
 
 }

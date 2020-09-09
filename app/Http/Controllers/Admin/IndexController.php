@@ -32,45 +32,14 @@ class IndexController extends Controller
             'title' => 'MUMU',
             'image' => 'images/logo.png',
         ];
-        // 菜单节点信息
-        $data = Node::where('status',1)
-            ->where('show', 1)
-            ->orderBy('sort')
-            ->get();
-        $menuInfo = $this->getTree($this->objectToArray($data));
         // 合并
         $systemInit = [
             'homeInfo' => $homeInfo,
             'logoInfo' => $logoInfo,
-            'menuInfo' => $menuInfo,
+            'menuInfo' => Node::getNodeAll()
         ];
         // 返回数据
-        return json_encode($systemInit);
-    }
-
-    /**
-     * 对菜单节点进行无限极分类
-     * @param $array
-     * @return array
-     */
-    public function getTree($array)
-    {
-        $refer = array();
-        $tree = array();
-        foreach($array as $key=>$val){
-            $refer[$val['id']] = &$array[$key];
-        }
-        foreach($array as $k => $v){
-            $pid = $v['pid']; //获取当前分类的父级id
-            if($pid == 0){
-                $tree[] = &$array[$k]; //顶级栏目
-            }else{
-                if(isset($refer[$pid])){
-                    $refer[$pid]['child'][] = &$array[$k]; //如果存在父级栏目，则添加进父级栏目的子栏目数组中
-                }
-            }
-        }
-        return $tree;
+        return json($systemInit);
     }
 
     /**

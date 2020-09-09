@@ -53,4 +53,5 @@ Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['aut
     Route::post('updateUser', 'Admin\UserController@updateUser')->name('admin_update_user');
     Route::get('deleteUser', 'Admin\UserController@deleteUser')->name('admin_delete_user');
 
+    Route::get('node', 'Admin\NodeController@node');
 });

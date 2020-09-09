@@ -1,12 +1,12 @@
 <?php
 /**
+ * 用户管理
  * @author: 齐云海
  * @time: 2020/9/3 21:10
  */
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\User as UserModel;
@@ -48,9 +48,11 @@ class UserController extends Controller
         }
     }
 
-    public function editUser()
+    public function editUser(Request $request)
     {
-        return view('admin.public.user.edit');
+        $with['id'] = $request->id;
+        $with['username'] = $request->username;
+        return view('admin.public.user.edit')->with($with);
     }
 
     public function updateUser()

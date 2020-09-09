@@ -46,14 +46,14 @@
         <form class="layui-form" action="javascript:void(0);">
             <div>
                 <i class="layui-icon layui-icon-username admin-icon"></i>
-                <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input admin-input admin-input-username">
+                <input type="text" name="username" lay-verify="required" lay-reqtext="请填写用户名" placeholder="请输入用户名" autocomplete="off" class="layui-input admin-input admin-input-username">
             </div>
             <div>
                 <i class="layui-icon layui-icon-password admin-icon"></i>
-                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input admin-input">
+                <input type="password" name="password" lay-verify="required" lay-reqtext="请填写密码" placeholder="请输入密码" autocomplete="off" class="layui-input admin-input">
             </div>
             <div>
-                <input type="text" name="captcha" placeholder="请输入验证码" autocomplete="off" class="layui-input admin-input admin-input-verify">
+                <input type="text" name="captcha" placeholder="请输入验证码" lay-verify="required" lay-reqtext="请填写验证码" autocomplete="off" class="layui-input admin-input admin-input-verify">
                 <img class="admin-captcha" width="90" height="30" src="{{captcha_src()}}">
             </div>
             <button class="layui-btn admin-button" lay-submit="" lay-filter="login">登 陆</button>
@@ -77,18 +77,6 @@
         // 进行登录操作
         form.on('submit(login)', function (data) {
             data = data.field;
-            if (data.username == '') {
-                layer.msg('用户名不能为空', {time: 1000});
-                return false;
-            }
-            if (data.password == '') {
-                layer.msg('密码不能为空', {time: 1000});
-                return false;
-            }
-            if (data.captcha == '') {
-                layer.msg('验证码不能为空', {time: 1000});
-                return false;
-            }
             $.ajax({
                 url: "{{route('admin_doLogin')}}",
                 type: "post",
@@ -107,9 +95,13 @@
                         return layer.msg(res.msg, {time: 1000})
                     }
                     if(res.code == 1) {
-                        layer.alert(res.msg, function(){
-                            window.location.href = "{{route('admin_index')}}"
-                        })
+                        layer.msg(res.msg, {
+                            icon: 1,
+                            time: 1000,
+                            end: function(){
+                                window.location.href = "{{route('admin_index')}}"
+                            }
+                        });
                     }
                 },
                 error: function () {

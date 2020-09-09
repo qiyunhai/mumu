@@ -5,6 +5,7 @@
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" lay-event="checkDelete">删除选中</button>
+        <button class="layui-btn layui-btn-sm" lay-event="add">添加用户</button>
     </div>
 </script>
 
@@ -61,6 +62,8 @@
                     }
                     // 执行批量删除
                     del(getIds(data))
+                case 'add':
+                    alert('123')
             }
         });
 
@@ -87,7 +90,7 @@
 
         function del(ids) {
             $.ajax({
-                url: "{{route('deleteUser')}}?ids=" + ids,
+                url: "{{route('admin_delete_user')}}?ids=" + ids,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
