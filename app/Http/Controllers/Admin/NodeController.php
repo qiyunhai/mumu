@@ -25,4 +25,15 @@ class NodeController extends Controller
         return view('admin.public.node.node')->with($with);
     }
 
+    /**
+     * 返回所有节点
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNodeAll(Request $request)
+    {
+        // 返回数据
+        return json(NodeModel::getNodeAll('children', ['title'=>'name']));
+    }
+
 }

@@ -54,4 +54,5 @@ Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['aut
     Route::get('deleteUser', 'Admin\UserController@deleteUser')->name('admin_delete_user');
 
     Route::get('node', 'Admin\NodeController@node');
+    Route::get('getNodeAll', 'Admin\NodeController@getNodeAll')->name('adminGetNodeAll');
 });

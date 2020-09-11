@@ -15,13 +15,21 @@ class Node extends Model
     /**
      * 获取所有后台节点
      * @param $childName [子节点键名，默认传child]
+     * @array $param [字段名称替换]
      * @return array
      */
-    public static function getNodeAll($childName = 'child')
+    public static function getNodeAll($childName = 'child', $param = [])
     {
+        $select = ['*'];
+        if(!empty($param)){
+            foreach ($param as $key=>$value){
+                array_push($select, "{$key} as {$value}");
+            }
+        }
         $data = self::where('status',1)
             ->where('show', 1)
             ->orderBy('sort')
+            ->select($select)
             ->get();
         return self::getTree(objectToArray($data), $childName);
     }

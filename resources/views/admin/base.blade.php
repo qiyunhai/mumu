@@ -30,6 +30,16 @@
         }
         return str.substring(0, str.length - 1);
     }
+
+    /**
+     * 引入并配置layui扩展组件
+     */
+    layui.config({
+        base: '{{asset(__ADMIN__)}}/lib/layui-v2.5.5/lay/modules/'
+    }).extend({
+        // 下拉框树形选择
+        treeSelect: 'treeSelect'
+    });
 </script>
 </body>
 </html>
