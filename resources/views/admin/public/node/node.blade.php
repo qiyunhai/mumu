@@ -10,6 +10,13 @@
         #tree {
             width: 100%;
         }
+        /*.required:before {*/
+            /*content: '*';*/
+            /*color: red;*/
+        /*}*/
+        .layui-this {
+            color: green !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -34,44 +41,68 @@
                             <div class="layui-tab-item layui-show">
                                 <form class="layui-form layui-form-pane" id="add_form" action="javascript:;">
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">父节点</label>
+                                        <label class="layui-form-label">父级节点</label>
                                         <div class="layui-input-block">
-                                            <select name="pid">
-                                                <option value=""></option>
-                                                <option value="0">写作</option>
-                                                <option value="1" selected="">阅读</option>
-                                                <option value="2">游戏</option>
-                                                <option value="3">音乐</option>
-                                                <option value="4">旅行</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="layui-form-item">
-                                        <label class="layui-form-label">测试2</label>
-                                        <div class="layui-input-block">
-                                            <input type="text" id="selectTree" name="title" lay-filter="selectTree" class="layui-input">
+                                            <input type="text" id="selectTree" name="pid" lay-filter="selectTree" class="layui-input">
                                         </div>
                                     </div>
 
                                     <div class="layui-form-item">
-                                        <label class="layui-form-label">长输入框</label>
+                                        <label class="layui-form-label">标题</label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                                            <input type="text" name="title" autocomplete="off" placeholder="请输入标题" lay-verify="required" class="layui-input">
                                         </div>
                                     </div>
 
                                     <div class="layui-form-item">
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">日期选择</label>
-                                            <div class="layui-input-block">
-                                                <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
-                                            </div>
+                                        <label class="layui-form-label">节点地址</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="href" autocomplete="off" placeholder="请输入节点地址，格式示例：/admin/welcome" lay-verify="required" class="layui-input">
                                         </div>
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">行内表单</label>
-                                            <div class="layui-input-inline">
-                                                <input type="text" name="number" autocomplete="off" class="layui-input">
-                                            </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">选择图标</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="icon" id="iconFonts" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">打开方式</label>
+                                        <div class="layui-input-block">
+                                            <input type="radio" name="target" title="当前页面打开" checked value="_self" class="layui-input">
+                                            <input type="radio" name="target" title="新建页面打开" value="_self" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">排序</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="sort" autocomplete="off" placeholder="请输入排序，不填写则默认为 0" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">显示状态</label>
+                                        <div class="layui-input-block">
+                                            <input type="radio" name="show" title="显示" checked value="1" class="layui-input">
+                                            <input type="radio" name="show" title="不显示" value="0" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">可用状态</label>
+                                        <div class="layui-input-block">
+                                            <input type="radio" name="status" title="可用" checked value="1" class="layui-input">
+                                            <input type="radio" name="status" title="不可用" value="0" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">备注</label>
+                                        <div class="layui-input-block">
+                                            <textarea type="text" name="remark" autocomplete="off" placeholder="请输入备注" class="layui-textarea"></textarea>
                                         </div>
                                     </div>
 
@@ -90,7 +121,7 @@
 
 @section('script')
     <script>
-        layui.use(['tree', 'util', 'element', 'jquery', 'treeSelect', 'form'], function(){
+        layui.use(['tree', 'util', 'element', 'jquery', 'treeSelect', 'form', 'IconFonts'], function(){
             var tree = layui.tree
                 ,layer = layui.layer
                 ,util = layui.util
@@ -98,6 +129,7 @@
                 ,$ = layui.jquery
                 ,form = layui.form
                 ,treeSelect= layui.treeSelect
+                ,IconFonts = layui.IconFonts
                 ,data = @json($nodeList)
 
             form.on('submit(saveNodel)', function(data){
@@ -112,7 +144,7 @@
                 // 异步加载方式：get/post，默认get
                 type: 'get',
                 // 占位符
-                placeholder: '占位符',
+                placeholder: '顶级节点',
                 // 是否开启搜索功能：true/false，默认false
                 search: true,
                 // 点击回调
@@ -206,11 +238,103 @@
 
             // 添加tab
             function addtab(title, id) {
-                // 新增修改Tab
+                var selectTreeId = 'selectTree_' + id;
+                var selectTreeElem = '#' + selectTreeId;
+                    // 新增修改Tab
                 element.tabAdd('demo', {
                     title: title
-                    ,content: '内容'+ (Math.random()*1000|0)
+                    // ,content: '内容'+ (Math.random()*1000|0)
+                    ,content: '<form class="layui-form layui-form-pane" action="javascript:;">\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">父级节点</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="text" id="'+ selectTreeId +'" name="pid" lay-filter="selectTree" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">标题</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="text" name="title" autocomplete="off" placeholder="请输入标题" lay-verify="required" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">节点地址</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="text" name="href" autocomplete="off" placeholder="请输入节点地址，格式示例：/admin/welcome" lay-verify="required" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">选择图标</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="text" name="icon" id="iconFonts" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">打开方式</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="radio" name="target" title="当前页面打开" checked value="_self" class="layui-input">\n' +
+                        '                                            <input type="radio" name="target" title="新建页面打开" value="_self" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">排序</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="text" name="sort" autocomplete="off" placeholder="请输入排序，不填写则默认为 0" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">显示状态</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="radio" name="show" title="显示" checked value="1" class="layui-input">\n' +
+                        '                                            <input type="radio" name="show" title="不显示" value="0" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">可用状态</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <input type="radio" name="status" title="可用" checked value="1" class="layui-input">\n' +
+                        '                                            <input type="radio" name="status" title="不可用" value="0" class="layui-input">\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <label class="layui-form-label">备注</label>\n' +
+                        '                                        <div class="layui-input-block">\n' +
+                        '                                            <textarea type="text" name="remark" autocomplete="off" placeholder="请输入备注" class="layui-textarea"></textarea>\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '\n' +
+                        '                                    <div class="layui-form-item">\n' +
+                        '                                        <button class="layui-btn" lay-submit="" lay-filter="saveNodel">保存</button>\n' +
+                        '                                    </div>\n' +
+                        '                                </form>'
                     ,id: id
+                });
+                treeSelect.render({
+                    // 选择器
+                    elem: selectTreeElem,
+                    // 数据
+                    data: "{{route('adminGetNodeAll')}}",
+                    // 异步加载方式：get/post，默认get
+                    type: 'get',
+                    // 占位符
+                    placeholder: '顶级节点',
+                    // 是否开启搜索功能：true/false，默认false
+                    search: true,
+                    // 加载完成后的回调函数
+                    success: function (d) {
+                        console.log(d);
+                    },
+                    error: function () {
+                        layer.msg('树形下拉列表加载异常', {icon: 5})
+                    }
                 });
                 // 切换到刚刚添加的Tab
                 checktab(id)
@@ -220,6 +344,20 @@
             function checktab(id) {
                 element.tabChange('demo', id);
             }
+
+            //图标选择器
+            IconFonts.render({
+                // 选择器，推荐使用input
+                elem: '#iconFonts', //选择器ID
+                // 数据类型：fontClass/layui_icon，
+                type: 'layui_icon',
+                // 是否开启搜索：true/false
+                search: true,
+                // 是否开启分页
+                page: true,
+                // 每页显示数量，默认12
+                limit: 12
+            });
 
         });
     </script>

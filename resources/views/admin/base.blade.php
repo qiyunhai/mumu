@@ -38,7 +38,9 @@
         base: '{{asset(__ADMIN__)}}/lib/layui-v2.5.5/lay/modules/'
     }).extend({
         // 下拉框树形选择
-        treeSelect: 'treeSelect'
+        treeSelect: 'treeSelect',
+        // 图标选择器
+        IconFonts: 'iconFonts'
     });
 </script>
 </body>
