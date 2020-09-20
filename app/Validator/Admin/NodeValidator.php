@@ -1,16 +1,16 @@
 <?php
 /**
+ * 节点验证器
  * @author: 齐云海
- * @time: 2020/8/29 23:47
+ * @time: 2020/9/19 11:13
  */
 namespace App\Validator\Admin;
 
 use Validator;
 
-class LoginValidator
+class NodeValidator
 {
     /**
-     * 登陆验证
      * @param $params
      * @return mixed|bool
      */
@@ -18,16 +18,15 @@ class LoginValidator
     {
         // 定义规则
         $rules = [
-            'username' =>	'bail|required',
-            'password' =>	'bail|required',
-            'captcha'  =>	'bail|required|captcha|size:4'
+            'pid'   =>	'bail|required|integer',
+            'title' => 'bail|required|string',
         ];
         // 编辑错误信息
         $messages = [
-            'username.required' => '用户名不能为空',
-            'password.required' => '密码不能为空',
-            'captcha.required'  => '验证码不能为空',
-            'captcha.captcha'	  => '验证码错误'
+            'pid.required'   => '请选择父级节点',
+            'pid.integer'    => '父级节点类型不正确',
+            'title.required' => '请填写标题',
+            'title.string'   => '标题类型不正确',
         ];
         // 验证
         $validator = Validator::make($params, $rules, $messages);
@@ -38,4 +37,5 @@ class LoginValidator
             return false;
         }
     }
+
 }

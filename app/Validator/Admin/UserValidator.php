@@ -19,9 +19,9 @@ class UserValidator
     {
         // 定义规则
         $rules = [
-            'username'               => 'required',
-            'password'               => 'required|min:6|max:18|confirmed',
-            'password_confirmation'  => 'required'
+            'username'               => 'bail|required',
+            'password'               => 'bail|required|min:6|max:18|confirmed',
+            'password_confirmation' => 'bail|required'
         ];
         // 编辑错误信息
         $messages = [
@@ -29,7 +29,7 @@ class UserValidator
             'password.required'               => '密码不能为空',
             'password.min'                    => '密码长度最少为6位',
             'password.max'                    => '密码长度最多为18位',
-            'password_confirmation.required'  => '请确认密码',
+            'password_confirmation.required' => '请确认密码',
             'password.confirmed'              => '两次密码不一致'
         ];
         // 验证

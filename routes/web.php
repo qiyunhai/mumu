@@ -55,4 +55,8 @@ Route::group(['prefix' => 'admin', 'namaspace' => 'Admin', 'middleware' => ['aut
 
     Route::get('node', 'Admin\NodeController@node');
     Route::get('getNodeAll', 'Admin\NodeController@getNodeAll')->name('adminGetNodeAll');
+    Route::post('saveNode', 'Admin\NodeController@saveNode')->name('adminSaveNode');
+    Route::get('editNode/{id}', 'Admin\NodeController@editNode');
+    Route::get('deleteNode/{id}', 'Admin\NodeController@deleteNode');
+
 });

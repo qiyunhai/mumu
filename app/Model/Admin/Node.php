@@ -6,11 +6,15 @@
 
 namespace App\Model\Admin;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Node extends Model
 {
+    use SoftDeletes;
     // 节点表名
     protected $table = 'admin_node';
+    // 设置白名单
+    protected $fillable = ['pid','title','href','icon','target','sort','show','status','remark'];
 
     /**
      * 获取所有后台节点
