@@ -27,7 +27,7 @@ class Node extends Model
         $select = ['*'];
         if(!empty($param)){
             foreach ($param as $key=>$value){
-                array_push($select, "{$key} as {$value}");
+                array_push($select, "{$key} AS {$value}");
             }
         }
         $data = self::where('status',1)
@@ -35,7 +35,7 @@ class Node extends Model
             ->orderBy('sort')
             ->select($select)
             ->get();
-        return self::getTree(objectToArray($data), $childName);
+        return ['tree'=>self::getTree(objectToArray($data), $childName), 'data'=>$data];
     }
 
     /**

@@ -133,32 +133,16 @@
                 ,form = layui.form
                 ,treeSelect= layui.treeSelect
                 ,IconFonts = layui.IconFonts
-                ,data = @json($nodeList)
+                ,nodeTree = @json($nodeTree)
+                ,nodeData = @json($nodeData);
 
             // form表单提交保存节点
             form.on('submit(saveNode)', function(data){
                 saveNode(data.field)
             });
 
-            treeSelect.render({
-                // 选择器
-                elem: '#selectTree',
-                // 数据
-                data: "{{route('adminGetNodeAll')}}",
-                // 异步加载方式：get/post，默认get
-                type: 'get',
-                // 占位符
-                placeholder: '顶级节点',
-                // 是否开启搜索功能：true/false，默认false
-                search: true,
-                // 点击回调
-                click: function(d){
-                    $("#selectTree").val(d.current.id);
-                },
-                error: function () {
-                    layer.msg('树形下拉列表加载异常', {icon: 5})
-                }
-            });
+            // 树形结构下拉框
+            setTreeSelect('#selectTree');
 
             // 隐藏添加节点的tab关闭
             $('#addNode').find('i').hide();
@@ -180,8 +164,8 @@
             // 渲染节点列表
             tree.render({
                 elem: '#tree'
-                ,data: data
-                ,edit: ['add', 'update', 'del'] //操作节点的图标
+                ,data: nodeTree
+                ,edit: ['add', 'del'] //操作节点的图标
                 ,click: function(obj){
                     for (let i = 0; i < ids.length; i++) {
                         // 如果节点已被选中，则切换到该tab下
@@ -202,10 +186,6 @@
                     // 添加节点时
                     if(type === 'add') {
 
-                    }
-                    // 修改节点时
-                    if(type === 'update') {
-                        console.log('123')
                     }
                     // 删除节点时
                     if(type === 'del') {
@@ -254,7 +234,7 @@
                 // 新增修改Tab
                 element.tabAdd('demo', {
                     title: title
-                    ,content: '<form class="layui-form layui-form-pane" action="javascript:;" id="editForm_'+ data.id+ '">\n' +
+                    ,content: '<form class="layui-form layui-form-pane" action="javascript:;" id="editForm_'+ datas.id+ '">\n' +
                         '                                    <div class="layui-form-item">\n' +
                         '                                        <label class="layui-form-label">父级节点</label>\n' +
                         '                                        <div class="layui-input-block">\n' +
@@ -339,35 +319,15 @@
                         '                                </form>'
                     ,id: id
                 });
-                treeSelect.render({
-                    // 选择器
-                    elem: selectTreeElem,
-                    // 数据
-                    data: "{{route('adminGetNodeAll')}}",
-                    // 异步加载方式：get/post，默认get
-                    type: 'get',
-                    // 占位符
-                    placeholder: '顶级节点',
-                    // 是否开启搜索功能：true/false，默认false
-                    search: true,
-                    // 加载完成后的回调函数
-                    success: function (d) {
-                        console.log(d)
-                        for (let i = 0; i<d.data.length; i++) {
-                            console.log(d.data[i].id)
-                            if(d.data[i].id == id) {
-                                console.log(d.data[i])
-                                var thisTreePid = d.data[i].pid;
-                                break
-                            }
+                setTreeSelect(selectTreeElem, function(d){
+                    for (let i = 0; i < nodeData.length; i++) {
+                        if(nodeData[i].id == id) {
+                            var thisTreePid = nodeData[i].pid;
+                            break
                         }
-                        console.log(thisTreePid)
-                        // 选中节点，根据id筛选
-                        treeSelect.checkNode(selectTreeId, id);
-                    },
-                    error: function () {
-                        layer.msg('树形下拉列表加载异常', {icon: 5})
                     }
+                    // 选中节点，根据id筛选
+                    treeSelect.checkNode(selectTreeId, thisTreePid);
                 });
                 // 图标选择器
                 setIconFonts(iconFontsElem);
@@ -381,8 +341,10 @@
             setIconFonts('#iconFonts');
 
             // 保存 or 更新节点数据
-            function saveNode(tmp) {
+            window.saveNode = function(tmp) {
                 var data = (typeof tmp == 'number') ? $("#editForm_" + tmp).serialize() : tmp;
+                console.log(data)
+                return;
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -402,7 +364,8 @@
                         layer.msg('服务器网络错误', {icon: 2})
                     }
                 })
-            }
+            };
+
             // 返回图标选择器
             function setIconFonts(elem) {
                 return IconFonts.render({
@@ -416,6 +379,30 @@
                     page: true,
                     // 每页显示数量，默认12
                     limit: 12
+                });
+            }
+
+            // 返回树形结构表单下拉框
+            function setTreeSelect(elem, success = {}) {
+                return treeSelect.render({
+                    // 选择器
+                    elem: elem,
+                    // 数据
+                    data: "{{route('adminGetNodeAll')}}",
+                    // 异步加载方式：get/post，默认get
+                    type: 'get',
+                    // 占位符
+                    placeholder: '顶级节点',
+                    // 是否开启搜索功能：true/false，默认false
+                    search: true,
+                    // 点击回调
+                    click: function(d){
+                        $(elem).val(d.current.id);
+                    },
+                    success: success,
+                    error: function () {
+                        layer.msg('树形下拉列表加载异常', {icon: 5})
+                    }
                 });
             }
 

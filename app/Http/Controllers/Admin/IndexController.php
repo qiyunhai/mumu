@@ -36,7 +36,7 @@ class IndexController extends Controller
         $systemInit = [
             'homeInfo' => $homeInfo,
             'logoInfo' => $logoInfo,
-            'menuInfo' => Node::getNodeAll()
+            'menuInfo' => Node::getNodeAll()['tree']
         ];
         // 返回数据
         return json($systemInit);

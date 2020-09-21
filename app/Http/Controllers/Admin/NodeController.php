@@ -21,7 +21,9 @@ class NodeController extends Controller
     public function node()
     {
         // 获取节点列表
-        $with['nodeList'] = NodeModel::getNodeAll('children');
+        $node = NodeModel::getNodeAll('children');
+        $with['nodeTree'] = $node['tree'];  //树形结构
+        $with['nodeData'] = objectToArray($node['data']);  //原始数据
         // 返回页面
         return view('admin.public.node.node')->with($with);
     }
@@ -34,7 +36,7 @@ class NodeController extends Controller
     public function getNodeAll(Request $request)
     {
         // 返回数据
-        return json(NodeModel::getNodeAll('children', ['title'=>'name']));
+        return json(NodeModel::getNodeAll('children', ['title'=>'name'])['tree']);
     }
 
     /**
