@@ -22,7 +22,8 @@ class NodeController extends Controller
     {
         // 获取节点列表
         $node = NodeModel::getNodeAll('children');
-        $with['nodeTree'] = $node['tree'];  //树形结构
+        $with['nodeTree'] = $node['tree'];  //树形结构数据
+        array_unshift($with['nodeTree'], ['id'=>0, 'pid'=>0, 'title'=>'顶级节点', 'sort'=>0]);// 拼接顶级节点数据
         $with['nodeData'] = objectToArray($node['data']);  //原始数据
         // 返回页面
         return view('admin.public.node.node')->with($with);
@@ -35,8 +36,12 @@ class NodeController extends Controller
      */
     public function getNodeAll(Request $request)
     {
+        // 获取所有节点
+        $nodes = NodeModel::getNodeAll('children', ['title'=>'name'])['tree'];
+        // 拼接顶级节点数据
+        array_unshift($nodes, ['id'=>0, 'pid'=>0, 'name'=>'顶级节点', 'sort'=>0]);
         // 返回数据
-        return json(NodeModel::getNodeAll('children', ['title'=>'name'])['tree']);
+        return json($nodes);
     }
 
     /**
@@ -64,6 +69,8 @@ class NodeController extends Controller
     {
         // 验证请求
         if($request->ajax()) {
+            // 验证顶级节点，给予赋值
+            $request->pid = $request->pid ?? 0;
             // 调用验证器验证
             $validator_result = NodeValidator::check($request->all());
             if($validator_result) {

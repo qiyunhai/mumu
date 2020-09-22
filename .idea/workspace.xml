@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e8024b26-06c3-4198-afe4-ef64dd7cb2c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/NodeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/NodeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Admin/Node.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Admin/Node.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mumu.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/data3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/admin/js/lay-module/layuimini/miniMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/admin/js/lay-module/layuimini/miniMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/public/node/node.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/public/node/node.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,23 +28,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Model/Admin/Node.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-              <folding>
-                <element signature="e#6#54#0#PHP" expanded="true" />
-                <element signature="e#83#122#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/NodeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="71" lean-forward="true" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
+            <state relative-caret-position="549">
+              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
               <folding>
                 <element signature="e#6#62#0#PHP" expanded="true" />
                 <element signature="e#103#131#0#PHP" expanded="true" />
@@ -60,8 +43,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/public/node/node.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="381" column="18" selection-start-line="381" selection-start-column="18" selection-end-line="381" selection-end-column="18" />
+            <state relative-caret-position="456">
+              <caret line="181" column="94" lean-forward="true" selection-start-line="181" selection-start-column="94" selection-end-line="181" selection-end-column="94" />
+              <folding>
+                <element signature="e#976#997#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/static/admin/lib/layui-v2.5.5/lay/modules/treeSelect.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="41964">
+              <caret line="4045" column="9" lean-forward="true" selection-start-line="4045" selection-start-column="9" selection-end-line="4045" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/base.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="798">
+              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -70,18 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>User</find>
-      <find>@</find>
-      <find>@js</find>
-      <find>demo-tree</find>
-      <find>test9</find>
-      <find>data1</find>
-      <find>util</find>
-      <find>autoload</find>
-      <find>tabAdd</find>
-      <find>tabChange</find>
-      <find>element</find>
-      <find>layer.op</find>
       <find>addtab</find>
       <find>add</find>
       <find>tree</find>
@@ -91,15 +83,27 @@
       <find>success</find>
       <find>selectTree</find>
       <find>treeSelect</find>
-      <find>setTreeSelect</find>
       <find>selectTreeElem</find>
       <find>selectTree_</find>
       <find>selectTreeId</find>
-      <find>setIconFonts</find>
       <find>nodeList</find>
       <find>data</find>
       <find>saveNode</find>
       <find>editForm_</find>
+      <find>layuimini-href</find>
+      <find>setTreeSelect</find>
+      <find>未找到</find>
+      <find>lay-demo</find>
+      <find>demoId1</find>
+      <find>iconFontsElem</find>
+      <find>iconFonts_</find>
+      <find>iconFonts</find>
+      <find>iconFontsId</find>
+      <find>setIconFonts</find>
+      <find>padding</find>
+      <find>6px</find>
+      <find>layui-iconpicker-body</find>
+      <find>IconFonts</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;{{__ADMIN__}}</replace>
@@ -156,8 +160,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" />
         <option value="$PROJECT_DIR$/resources/js/test.js" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/public/node/node.blade.php" />
+        <option value="$PROJECT_DIR$/public/static/admin/js/lay-module/layuimini/miniMenu.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/NodeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/public/node/node.blade.php" />
       </list>
     </option>
   </component>
@@ -272,8 +277,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
+    <option name="x" value="2032" />
+    <option name="y" value="-10" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -338,6 +343,75 @@
             <path>
               <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
               <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Validator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Validator" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="layui-v2.5.5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="layui-v2.5.5" type="462c0819:PsiDirectoryNode" />
+              <item name="lay" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="layui-v2.5.5" type="462c0819:PsiDirectoryNode" />
+              <item name="lay" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mumu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mumu" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -379,7 +453,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/phpStudy/WWW/TeprySystemV2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -433,11 +507,12 @@
       <workItem from="1599697675573" duration="1956000" />
       <workItem from="1599794781828" duration="13367000" />
       <workItem from="1600650175469" duration="7836000" />
+      <workItem from="1600734408684" duration="18350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86465000" />
+    <option name="totallyTimeSpent" value="104815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -445,7 +520,7 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.27132195" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.2739872" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.329718" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -469,49 +544,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/index.blade.php" />
-    <entry file="file://$PROJECT_DIR$/public/static/admin/api/init.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="e#3549#4748#0" />
-            <element signature="e#4754#6119#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/welcome.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user.blade.php" />
-    <entry file="file://D:/Desktop/4459514_www.jianhuxi.shop.pem" />
-    <entry file="file://D:/Desktop/4459514_www.jianhuxi.shop.key" />
-    <entry file="file://$PROJECT_DIR$/app/Model/Admin/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="27" column="67" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
-          <folding>
-            <element signature="e#6#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/public/user/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/public/user/add.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Validator/Admin/LoginValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Validator/Admin/RoleValidator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -624,27 +656,6 @@
     </entry>
     <entry file="file://D:/Desktop/treeselect/index.html" />
     <entry file="file://D:/Desktop/treeselect/data/data3.json" />
-    <entry file="file://$PROJECT_DIR$/public/static/admin/lib/layui-v2.5.5/lay/modules/treeSelect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="1089" column="17" selection-start-line="1089" selection-start-column="10" selection-end-line="1089" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/base.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="59" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="53" column="91" selection-start-line="53" selection-start-column="91" selection-end-line="53" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -689,13 +700,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/test.js" />
     <entry file="file://$PROJECT_DIR$/app/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -732,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Model/Admin/Node.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="36">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#6#54#0#PHP" expanded="true" />
             <element signature="e#83#122#0#PHP" expanded="true" />
@@ -741,10 +746,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Validator/Admin/NodeValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="53" column="91" selection-start-line="53" selection-start-column="91" selection-end-line="53" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/api/init.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/api/clear.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/api/menus.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/api/table.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/api/tableSelect.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/api/upload.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/js/lay-module/layuimini/miniMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/js/lay-module/layuimini/miniAdmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/js/lay-module/iconPicker/iconPickerFa.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6800" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/base.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/NodeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="71" lean-forward="true" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
+        <state relative-caret-position="549">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding>
             <element signature="e#6#62#0#PHP" expanded="true" />
             <element signature="e#103#131#0#PHP" expanded="true" />
@@ -752,10 +815,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/admin/lib/layui-v2.5.5/lay/modules/treeSelect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41964">
+          <caret line="4045" column="9" lean-forward="true" selection-start-line="4045" selection-start-column="9" selection-end-line="4045" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/public/node/node.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="381" column="18" selection-start-line="381" selection-start-column="18" selection-end-line="381" selection-end-column="18" />
+        <state relative-caret-position="456">
+          <caret line="181" column="94" lean-forward="true" selection-start-line="181" selection-start-column="94" selection-end-line="181" selection-end-column="94" />
+          <folding>
+            <element signature="e#976#997#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

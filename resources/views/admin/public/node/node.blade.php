@@ -15,10 +15,10 @@
             /*color: red;*/
         /*}*/
         .layui-this {
-            color: #5FB878 !important;
+            color: #009688 !important;
         }
         .layui-tab-title {
-            border-bottom: 1px solid #5FB878 !important;
+            border-bottom: 1px solid #009688 !important;
         }
     </style>
 @endsection
@@ -28,6 +28,8 @@
             <div class="layui-card">
                 <div class="layui-card-header">节点列表</div>
                 <div class="layui-card-body">
+                    <button class="layui-btn layui-btn-xs" id="tree_open" onclick="tree_action('open')"><i class="layui-icon layui-icon-addition"></i>全部展开</button>
+                    <button class="layui-btn layui-btn-xs" id="tree_close" onclick="tree_action('close')" style="display: none"><i class="layui-icon layui-icon-subtraction"></i>全部折叠</button>
                     <div id="tree" class="demo-tree demo-tree-box"></div>
                 </div>
             </div>
@@ -143,24 +145,14 @@
 
             // 树形结构下拉框
             setTreeSelect('#selectTree');
+            //图标选择器
+            setIconFonts('#iconFonts');
+            // IconFonts.checkIcon('iconFonts', 'layui-icon-rate-half', "layui_icon"); // 默认选中
 
             // 隐藏添加节点的tab关闭
             $('#addNode').find('i').hide();
 
-            //按钮事件
-            util.event('lay-demo', {
-                getChecked: function(othis){
-                    var checkedData = tree.getChecked('demoId1'); //获取选中节点的数据
-
-                    layer.alert(JSON.stringify(checkedData), {shade:0});
-                    console.log(checkedData);
-                }
-                ,setChecked: function(){
-                    tree.setChecked('demoId1', [12, 16]); //勾选指定节点
-                }
-            });
-
-            var ids = [];
+            var ids = [];   // 选中节点的id
             // 渲染节点列表
             tree.render({
                 elem: '#tree'
@@ -180,15 +172,33 @@
                 ,operate: function (obj) {
                     var type = obj.type;
                     var data = obj.data;
-                    var elem = obj.elem;
-                    var daeptId = data.id;
-                    var parentId = data.parentId;
                     // 添加节点时
                     if(type === 'add') {
-
+                        // 新增子节点时自动展开
+                        $("div[data-id='"+data.id+"']").addClass('layui-tree-spread');
+                        $("div[data-id='"+data.id+"']").find('.layui-tree-icon').eq(-1).html('<i class="layui-icon layui-icon-subtraction"></i>');
+                        $("div[data-id='"+data.id+"']").find('.layui-tree-pack').eq(-1).show();
                     }
                     // 删除节点时
                     if(type === 'del') {
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "/admin/deleteNode/" + data.id,
+                            type: "get",
+                            dataType: "json",
+                            success: function (res) {
+                                if(res.code == 0) {
+                                    layer.msg(res.data, {icon: 1})
+                                } else if(res.code == -1) {
+                                    layer.msg(res.msg, {icon: 5})
+                                }
+                            },
+                            error: function () {
+                                layer.msg('服务器网络错误', {icon: 2})
+                            }
+                        });
                         return layer.msg('删除失败')
                     }
                 }
@@ -271,7 +281,7 @@
                                                                      +' value="_self" class="layui-input">\n' +
                         '                                            <input type="radio" name="target" title="新建页面打开" '+
                         (datas.target == '_blank' ? 'checked' : '')
-                        +' value="_self" class="layui-input">\n' +
+                        +' value="_blank" class="layui-input">\n' +
                         '                                        </div>\n' +
                         '                                    </div>\n' +
                         '\n' +
@@ -328,23 +338,22 @@
                     }
                     // 选中节点，根据id筛选
                     treeSelect.checkNode(selectTreeId, thisTreePid);
+                    // 给选中节点赋值
+                    thisTreePid = thisTreePid ? thisTreePid : '0';
+                    $(selectTreeElem).val(thisTreePid)
                 });
-                // 图标选择器
-                setIconFonts(iconFontsElem);
                 // 更新表单
                 form.render();
                 // 切换到刚刚添加的Tab
                 element.tabChange('demo', id);
+                // 图标选择器
+                setIconFonts(iconFontsElem);
+                IconFonts.checkIcon(iconFontsId, datas.icon, "layui_icon"); // 默认选中
             }
-
-            //图标选择器
-            setIconFonts('#iconFonts');
 
             // 保存 or 更新节点数据
             window.saveNode = function(tmp) {
                 var data = (typeof tmp == 'number') ? $("#editForm_" + tmp).serialize() : tmp;
-                console.log(data)
-                return;
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -374,11 +383,11 @@
                     // 数据类型：fontClass/layui_icon，
                     type: 'layui_icon',
                     // 是否开启搜索：true/false
-                    search: true,
+                    search: false,
                     // 是否开启分页
-                    page: true,
+                    page: false,
                     // 每页显示数量，默认12
-                    limit: 12
+                    // limit: 12
                 });
             }
 
@@ -392,7 +401,7 @@
                     // 异步加载方式：get/post，默认get
                     type: 'get',
                     // 占位符
-                    placeholder: '顶级节点',
+                    placeholder: '请选择父级节点',
                     // 是否开启搜索功能：true/false，默认false
                     search: true,
                     // 点击回调
@@ -404,6 +413,25 @@
                         layer.msg('树形下拉列表加载异常', {icon: 5})
                     }
                 });
+            }
+
+            // 树形结构操作
+            window.tree_action = function(a) {
+                if(a == 'open') {
+                    // 全部展开
+                    $("#tree_open").hide();
+                    $("#tree_close").show();
+                    $(".layui-tree-setHide").addClass('layui-tree-spread');
+                    $(".layui-tree-pack").show();
+                    $(".layui-tree-icon").html('<i class="layui-icon layui-icon-subtraction"></i>');
+                } else if(a == 'close') {
+                    // 全部折叠
+                    $("#tree_open").show();
+                    $("#tree_close").hide();
+                    $(".layui-tree-setHide").removeClass('layui-tree-spread');
+                    $(".layui-tree-pack").hide();
+                    $(".layui-tree-icon").html('<i class="layui-icon layui-icon-addition"></i>');
+                }
             }
 
         });
